@@ -33,7 +33,8 @@ class Projects extends Component {
 
   render() {
     const berlandPics = [
-      "images/berlandAnimations/ScreenShots_Berland-width-525-8-Overlay.png",
+      // "images/berlandAnimations/ScreenShots_Berland-width-525-8-Overlay.png",
+      "images/berlandAnimations/ScreenShots_Berland-width-525-OverlayWhiteBlue.png",
       "images/berlandAnimations/ScreenShots_Berland-width-525-1.png",
       "images/berlandAnimations/ScreenShots_Berland-width-525-2.png",
       "images/berlandAnimations/ScreenShots_Berland-width-525-3.png",
@@ -44,7 +45,8 @@ class Projects extends Component {
     ];
 
     const todaysPics = [
-      "images/todaysIposAnimation/ScreenShots_TodaysIpos_width525-7-overlay.png",
+      // "images/todaysIposAnimation/ScreenShots_TodaysIpos_width525-7-overlay.png",
+      "images/todaysIposAnimation/ScreenShots_TodaysIpos_525-overlayWhite.png",
       "images/todaysIposAnimation/ScreenShots_TodaysIpos_width525-1.png",
       "images/todaysIposAnimation/ScreenShots_TodaysIpos_width525-2.png",
       "images/todaysIposAnimation/ScreenShots_TodaysIpos_width525-3.png",

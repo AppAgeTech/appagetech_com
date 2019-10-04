@@ -47,7 +47,7 @@ export default function LandingTransition(renderer, clearColor, toggleTransition
       // emissiveMap.anisotropy = 16;
 
       // Models
-      new GLTFLoader().setPath("/models/").load("Logo_Type_Large_2.glb", function(gltf) {
+      new GLTFLoader().setPath("/models/").load("Landing-Logo-Type.glb", function(gltf) {
         gltf.scene.traverse(function(child) {
           if (child.isMesh) {
             type = child;
@@ -57,7 +57,6 @@ export default function LandingTransition(renderer, clearColor, toggleTransition
               color: 0x000000,
               metalness: 1,
               roughness: 0.2
-              // anisotropy: 16
             });
           }
         });
@@ -74,11 +73,10 @@ export default function LandingTransition(renderer, clearColor, toggleTransition
               envMapIntensity: 1,
               emissiveMap: emissiveMap,
               emissiveIntensity: 0.5,
-              // color: 0xfddf73,
               emissive: 0xb3dde9,
               color: 0x3da3e3,
               metalness: 1,
-              roughness: 0.5
+              roughness: 0
             });
           }
         });
@@ -138,7 +136,7 @@ export default function LandingTransition(renderer, clearColor, toggleTransition
 
   const starForge = () => {
     var starQty = 800000;
-    const starGeometry = new THREE.SphereGeometry(170, 10, 10);
+    let starGeometry = new THREE.SphereGeometry(170, 10, 10);
 
     const materialOptions = {
       size: 0.06,
@@ -160,12 +158,13 @@ export default function LandingTransition(renderer, clearColor, toggleTransition
     const stars = new THREE.PointCloud(starGeometry, starStuff);
     scene.add(stars);
   };
+
   starForge();
 
   this.render = function(rtt) {
     if (icon && type) {
-      icon.rotation.y += 0.009;
-      type.rotation.y += 0.009;
+      icon.rotation.y += 0.01;
+      type.rotation.y += 0.01;
     }
     renderer.render(scene, this.camera);
   };

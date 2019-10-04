@@ -423,7 +423,7 @@ class Home extends Component {
         const scale = new THREE.Vector3(1.3, 1.3, 1.3);
 
         const logoTypeLoader = new GLTFLoader().setPath("/models/");
-        logoTypeLoader.load("Logo_Type.glb", function(gltf) {
+        logoTypeLoader.load("Logo_Type_30percentZ.glb", function(gltf) {
           gltf.scene.traverse(function(child) {
             if (child.isMesh) {
               child.material = new THREE.MeshStandardMaterial(typeParams);
@@ -468,7 +468,7 @@ class Home extends Component {
         });
 
         const contactTypeLoader = new GLTFLoader().setPath("/models/");
-        contactTypeLoader.load("Contact_Button_Type.glb", function(gltf) {
+        contactTypeLoader.load("Contact_Type_30percentZ.glb", function(gltf) {
           gltf.scene.traverse(function(child) {
             if (child.isMesh) {
               child.material = new THREE.MeshStandardMaterial(typeParams);
@@ -512,7 +512,7 @@ class Home extends Component {
         });
 
         const aboutTypeLoader = new GLTFLoader().setPath("/models/");
-        aboutTypeLoader.load("About_Button_Type.glb", function(gltf) {
+        aboutTypeLoader.load("About_Type_30percentZ.glb", function(gltf) {
           gltf.scene.traverse(function(child) {
             if (child.isMesh) {
               child.material = new THREE.MeshStandardMaterial(typeParams);
@@ -556,7 +556,7 @@ class Home extends Component {
         });
 
         const projectsTypeLoader = new GLTFLoader().setPath("/models/");
-        projectsTypeLoader.load("Projects_Button_Type.glb", function(gltf) {
+        projectsTypeLoader.load("Projects_Type_30percentZ.glb", function(gltf) {
           gltf.scene.traverse(function(child) {
             if (child.isMesh) {
               child.material = new THREE.MeshStandardMaterial(typeParams);
@@ -600,7 +600,7 @@ class Home extends Component {
         });
 
         const clientTypeLoader = new GLTFLoader().setPath("/models/");
-        clientTypeLoader.load("Client_Button_Type.glb", function(gltf) {
+        clientTypeLoader.load("Client_Type_30PercentZ.glb", function(gltf) {
           gltf.scene.traverse(function(child) {
             if (child.isMesh) {
               child.material = new THREE.MeshStandardMaterial(typeParams);

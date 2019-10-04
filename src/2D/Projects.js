@@ -34,7 +34,7 @@ class Projects extends Component {
   render() {
     const berlandPics = [
       // "images/berlandAnimations/ScreenShots_Berland-width-525-8-Overlay.png",
-      "images/berlandAnimations/ScreenShots_Berland-width-525-OverlayWhiteBlue.png",
+      "images/berlandAnimations/ScreenShots_Berland-width-525-OverlayWhite.png",
       "images/berlandAnimations/ScreenShots_Berland-width-525-1.png",
       "images/berlandAnimations/ScreenShots_Berland-width-525-2.png",
       "images/berlandAnimations/ScreenShots_Berland-width-525-3.png",

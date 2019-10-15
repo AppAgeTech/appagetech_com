@@ -1207,7 +1207,6 @@ class Home extends Component {
         raycaster.setFromCamera(mouseCoords, camera);
         const intersectButtonsMd = raycaster.intersectObjects([logo, about, contact, projects, client]);
         if (intersectButtonsMd.length > 0) {
-          camera.position.x = 1;
           camera.position.x = 0;
           if (intersectButtonsMd[0].object.callback) {
             intersectButtonsMd[0].object.callback();
@@ -1243,8 +1242,9 @@ class Home extends Component {
         raycaster.setFromCamera(mouseCoords, camera);
         const intersectButtonsMd = raycaster.intersectObjects([logo, about, contact, projects, client]);
         if (intersectButtonsMd.length > 0) {
-          camera.position.x = 0;
           if (intersectButtonsMd[0].object.callback) {
+            camera.position.x = 0;
+            mouseCoords.set(0, 0);
             intersectButtonsMd[0].object.callback();
           }
         }

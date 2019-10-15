@@ -33,7 +33,7 @@ class Projects extends Component {
 
   render() {
     const berlandPics = [
-      "images/berlandAnimations/ScreenShots_Berland-width-525-OverlayWhiteBlue.png",
+      "images/berlandAnimations/ScreenShots_Berland-width-525-SolidWhite.png",
       "images/berlandAnimations/ScreenShots_Berland-width-525-1.png",
       "images/berlandAnimations/ScreenShots_Berland-width-525-2.png",
       "images/berlandAnimations/ScreenShots_Berland-width-525-3.png",
@@ -44,7 +44,7 @@ class Projects extends Component {
     ];
 
     const todaysPics = [
-      "images/todaysIposAnimation/ScreenShots_TodaysIpos_525-overlayWhiteBlue.png",
+      "images/todaysIposAnimation/ScreenShots_TodaysIpos_525-SolidWhite.png",
       "images/todaysIposAnimation/ScreenShots_TodaysIpos_width525-1.png",
       "images/todaysIposAnimation/ScreenShots_TodaysIpos_width525-2.png",
       "images/todaysIposAnimation/ScreenShots_TodaysIpos_width525-3.png",
@@ -54,7 +54,7 @@ class Projects extends Component {
 
     const windowAspect = window.innerWidth / window.innerHeight;
 
-    const variableWidth = windowAspect > 1 ? 535 : 420;
+    const variableWidth = windowAspect > 1 ? 450 : 420;
 
     const variableMarginTop = windowAspect > 1 ? 100 : 240;
 

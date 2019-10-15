@@ -15,9 +15,8 @@ import Client from "./2D/Client";
 import Contact from "./2D/Contact";
 import Projects from "./2D/Projects";
 import LandingTransition from "./LandingTransition";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-let camera, glScene, cssScene, glRenderer, cssRenderer, container, controls;
+let camera, glScene, cssScene, glRenderer, cssRenderer, container;
 let cubeGenerator, pmremGenerator, pmremCubeUVPacker;
 let logo, about, contact, projects, client;
 let logoType, aboutType, contactType, projectsType, clientType;
@@ -263,22 +262,7 @@ class Home extends Component {
     camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.25, 4000);
     camera.position.set(0, 0, 224);
     camera.lookAt(0, 0, 0);
-
     glRenderer = this.createGlRenderer();
-    // controls = new OrbitControls(camera, glRenderer.domElement);
-    // controls.enableZoom = false;
-    // console.log("math.pi", Math.PI);
-    // console.log("math.pi / 4", Math.PI / 4);
-    // How far you can orbit vertically, upper and lower limits.
-    // Range is 0 to Math.PI radians.
-    // controls.minPolarAngle = 0; // radians
-    // controls.maxPolarAngle = 0; // radians
-
-    // How far you can orbit horizontally, upper and lower limits.
-    // If set, must be a sub-interval of the interval [ - Math.PI, Math.PI ].
-    // controls.minAzimuthAngle = -Math.PI / 2; // radians
-    // controls.maxAzimuthAngle = Math.PI / 2; // radians
-
     cssRenderer = this.createCssRenderer();
     container = document.createElement("div");
     document.body.appendChild(container);
@@ -345,7 +329,6 @@ class Home extends Component {
 
   // Show react component
   showReactComponent = reactComponentName => {
-    // console.log(reactComponentName);
     // Checks a second click: is the CSS renderer is visible
     if (
       parseInt(cssRenderer.domElement.style.zIndex, 10) === 0 &&
@@ -1119,7 +1102,7 @@ class Home extends Component {
             if (intersected.isMesh && intersected.name === "logoIcon") {
               glScene.traverse(function(child) {
                 if (child.isMesh && child.name === "logoType") {
-                  child.material.emissive.setHex(0xff0042);
+                  // child.material.emissive.setHex(0xff0042);
                 } else if (
                   (child.isMesh && child.name === "clientType") ||
                   (child.isMesh && child.name === "projectsType") ||
@@ -1224,6 +1207,8 @@ class Home extends Component {
         raycaster.setFromCamera(mouseCoords, camera);
         const intersectButtonsMd = raycaster.intersectObjects([logo, about, contact, projects, client]);
         if (intersectButtonsMd.length > 0) {
+          camera.position.x = 1;
+          camera.position.x = 0;
           if (intersectButtonsMd[0].object.callback) {
             intersectButtonsMd[0].object.callback();
           }
@@ -1258,6 +1243,7 @@ class Home extends Component {
         raycaster.setFromCamera(mouseCoords, camera);
         const intersectButtonsMd = raycaster.intersectObjects([logo, about, contact, projects, client]);
         if (intersectButtonsMd.length > 0) {
+          camera.position.x = 0;
           if (intersectButtonsMd[0].object.callback) {
             intersectButtonsMd[0].object.callback();
           }

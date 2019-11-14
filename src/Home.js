@@ -230,7 +230,7 @@ class Home extends Component {
     glRenderer.setClearColor(0xecf8ff, 1);
     glRenderer.setPixelRatio(window.devicePixelRatio);
     glRenderer.setSize(window.innerWidth, window.innerHeight);
-    // glRenderer.antialias = true;
+    glRenderer.antialias = true;
     glRenderer.domElement.style.position = "absolute";
     glRenderer.domElement.style.top = 0;
     return glRenderer;

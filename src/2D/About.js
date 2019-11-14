@@ -81,14 +81,11 @@ class About extends Component {
                 marginTop: marginTop,
                 marginLeft: marginX,
                 marginRight: marginX
-                // overscrollBehaviorY: "smooth",
-                // overflowY: "scroll",
-                // webkitOverflowScrolling: "touch"
               }}
             >
               <div style={{ paddingTop: 100, marginBottom: 30 }}>
                 <img
-                  src="images/Figures-By-Donna-05-Centered.png"
+                  src="images/Figures-By-Donna-06-Centered.png"
                   width="100%"
                   height="auto"
                   alt=""

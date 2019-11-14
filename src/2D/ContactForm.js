@@ -55,6 +55,7 @@ class ContactForm extends Component {
         <Button variant="light" onClick={this.handleShow}>
           <FontAwesomeIcon icon={faEnvelopeSquare} size="4x" color="black" />
         </Button>
+
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Contact App Age Technologies</Modal.Title>

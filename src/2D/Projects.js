@@ -3,6 +3,7 @@ import BerlandDetail from "./BerlandDetail";
 import TodaysIposDetail from "./TodaysIposDetail";
 import posed from "react-pose";
 import SplitText from "react-pose-text";
+import { linear } from "@popmotion/easing";
 
 const Box = posed.div({
   hoverable: true,
@@ -29,6 +30,19 @@ const charPoses = {
     delay: ({ charIndex }) => charIndex * 100
   }
 };
+
+const Container = posed.div({
+  hueRotate: {
+    "--color": true,
+    transition: () => ({
+      type: "keyframes",
+      values: ["#198FE3", "#FF1C68", "#9B65DE"],
+      duration: 10000,
+      ease: linear,
+      loop: Infinity
+    })
+  }
+});
 
 class Projects extends Component {
   constructor(props) {
@@ -63,64 +77,96 @@ class Projects extends Component {
 
     return (
       <div>
-        <BerlandDetail show={this.state.showBerlandDetail} onHide={() => this.setState({ showBerlandDetail: false })} />
+        <BerlandDetail
+          show={this.state.showBerlandDetail}
+          onHide={() => this.setState({ showBerlandDetail: false })}
+        />
         <TodaysIposDetail
           show={this.state.showTodaysIposDetail}
           onHide={() => this.setState({ showTodaysIposDetail: false })}
         />
-        <div className="container" style={{ marginTop: variableMarginTop, padding: 0, marginLeft: 0, marginRight: 0 }}>
+        <div
+          className="container"
+          style={{
+            marginTop: variableMarginTop,
+            padding: 0,
+            marginLeft: 0,
+            marginRight: 0
+          }}
+        >
           <div className="row justify-content-center">
-            <Box
-              className="box"
-              onPressStart={this.onClickBerland}
+            <Container
               style={{
-                background: "#fa424a",
-                borderRadius: "30px",
-                borderColor: "black",
-                borderWidth: "4px",
-                width: variableWidth,
-                height: variableWidth,
-                margin: 10,
                 display: "flex",
-                alignItems: "center"
+                justifyContent: "center",
+                alignItems: "center",
+                "--color": 0x14d790
               }}
+              initialPose="none"
+              pose="hueRotate"
             >
-              <div className="container">
-                <div className="row justify-content-center">
-                  <div style={{ fontSize: variableFontSize }}>
-                    <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
-                      toddberland.com
-                    </SplitText>
+              <Box
+                className="box"
+                onPressStart={this.onClickBerland}
+                style={{
+                  // background: "#fa424a",
+                  borderRadius: "30px",
+                  borderColor: "black",
+                  borderWidth: "4px",
+                  width: variableWidth,
+                  height: variableWidth,
+                  margin: 10,
+                  display: "flex",
+                  alignItems: "center",
+                  background: "var(--color)",
+                  transformOrigin: "50% 50%"
+                }}
+              >
+                <div className="container">
+                  <div className="row justify-content-center">
+                    <div style={{ fontSize: variableFontSize }}>
+                      <SplitText
+                        initialPose="exit"
+                        pose="enter"
+                        charPoses={charPoses}
+                      >
+                        toddberland.com
+                      </SplitText>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Box>
+              </Box>
 
-            <Box
-              className="box"
-              onPressStart={this.onClickTodaysIpos}
-              style={{
-                background: "#208BC7",
-                borderRadius: "30px",
-                borderColor: "black",
-                borderWidth: "4px",
-                width: variableWidth,
-                height: variableWidth,
-                margin: 10,
-                display: "flex",
-                alignItems: "center"
-              }}
-            >
-              <div className="container">
-                <div className="row justify-content-center">
-                  <div style={{ fontSize: variableFontSize }}>
-                    <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
-                      todaysipos.com
-                    </SplitText>
+              <Box
+                className="box"
+                onPressStart={this.onClickTodaysIpos}
+                style={{
+                  background: "#208BC7",
+                  borderRadius: "30px",
+                  borderColor: "black",
+                  borderWidth: "4px",
+                  width: variableWidth,
+                  height: variableWidth,
+                  margin: 10,
+                  display: "flex",
+                  alignItems: "center"
+                }}
+              >
+                <div className="container">
+                  <div className="row justify-content-center">
+                    <div style={{ fontSize: variableFontSize }}>
+                      <SplitText
+                        initialPose="exit"
+                        pose="enter"
+                        charPoses={charPoses}
+                      >
+                        todaysipos.com
+                      </SplitText>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Box>
+              </Box>
+            </Container>
           </div>
         </div>
       </div>

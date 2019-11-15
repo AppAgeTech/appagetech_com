@@ -5,14 +5,23 @@ import { EquirectangularToCubeGenerator } from "three/examples/jsm/loaders/Equir
 import { PMREMGenerator } from "three/examples/jsm/pmrem/PMREMGenerator.js";
 import { PMREMCubeUVPacker } from "three/examples/jsm/pmrem/PMREMCubeUVPacker.js";
 
-export default function LandingTransition(renderer, clearColor, toggleTransitionFunc) {
+export default function LandingTransition(
+  renderer,
+  clearColor,
+  toggleTransitionFunc
+) {
   // Initial variables
   const raycaster = new THREE.Raycaster();
   const mouse = new THREE.Vector2();
   let touchEvent = false;
   let mouseMoved = false;
   // Scene & Camera
-  this.camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.25, 20);
+  this.camera = new THREE.PerspectiveCamera(
+    40,
+    window.innerWidth / window.innerHeight,
+    0.25,
+    20
+  );
   this.camera.position.z = 7.5;
   const scene = new THREE.Scene();
 
@@ -35,7 +44,9 @@ export default function LandingTransition(renderer, clearColor, toggleTransition
 
       cubeGenerator.update(renderer);
 
-      const pmremGenerator = new PMREMGenerator(cubeGenerator.renderTarget.texture);
+      const pmremGenerator = new PMREMGenerator(
+        cubeGenerator.renderTarget.texture
+      );
       pmremGenerator.update(renderer);
       const pmremCubeUVPacker = new PMREMCubeUVPacker(pmremGenerator.cubeLods);
       pmremCubeUVPacker.update(renderer);
@@ -46,42 +57,46 @@ export default function LandingTransition(renderer, clearColor, toggleTransition
       const emissiveMap = emissiveMapLoader.load("textures/EmissiveMap_01.png");
 
       // Models
-      new GLTFLoader().setPath("/models/").load("Landing-Logo-Type.glb", function(gltf) {
-        gltf.scene.traverse(function(child) {
-          if (child.isMesh) {
-            type = child;
-            type.material = new THREE.MeshStandardMaterial({
-              envMap: envMap,
-              envMapIntensity: 2,
-              color: 0x000000,
-              metalness: 1,
-              roughness: 0.2
-            });
-          }
+      new GLTFLoader()
+        .setPath("/models/")
+        .load("Landing-Logo-Type.glb", function(gltf) {
+          gltf.scene.traverse(function(child) {
+            if (child.isMesh) {
+              type = child;
+              type.material = new THREE.MeshStandardMaterial({
+                envMap: envMap,
+                envMapIntensity: 2,
+                color: 0x000000,
+                metalness: 1,
+                roughness: 0.2
+              });
+            }
+          });
+          type.callback = () => startTransition("Type");
+          scene.add(gltf.scene);
         });
-        type.callback = () => startTransition("Type");
-        scene.add(gltf.scene);
-      });
 
-      new GLTFLoader().setPath("/models/").load("Logo_Icon_Large.glb", function(gltf) {
-        gltf.scene.traverse(function(child) {
-          if (child.isMesh) {
-            icon = child;
-            icon.material = new THREE.MeshStandardMaterial({
-              envMap: envMap,
-              envMapIntensity: 1,
-              emissiveMap: emissiveMap,
-              emissiveIntensity: 0.5,
-              emissive: 0xb3dde9,
-              color: 0x3da3e3,
-              metalness: 1,
-              roughness: 0
-            });
-          }
+      new GLTFLoader()
+        .setPath("/models/")
+        .load("Logo_Icon_Large.glb", function(gltf) {
+          gltf.scene.traverse(function(child) {
+            if (child.isMesh) {
+              icon = child;
+              icon.material = new THREE.MeshStandardMaterial({
+                envMap: envMap,
+                envMapIntensity: 1,
+                emissiveMap: emissiveMap,
+                emissiveIntensity: 0.5,
+                emissive: 0xb3dde9,
+                color: 0x3da3e3,
+                metalness: 1,
+                roughness: 0
+              });
+            }
+          });
+          icon.callback = () => startTransition("Icon");
+          scene.add(gltf.scene);
         });
-        icon.callback = () => startTransition("Icon");
-        scene.add(gltf.scene);
-      });
       pmremGenerator.dispose();
       pmremCubeUVPacker.dispose();
 
@@ -101,7 +116,10 @@ export default function LandingTransition(renderer, clearColor, toggleTransition
   };
 
   const setMouseCoords = (x, y) => {
-    mouse.set((x / renderer.domElement.clientWidth) * 2 - 1, -(y / renderer.domElement.clientHeight) * 2 + 1);
+    mouse.set(
+      (x / renderer.domElement.clientWidth) * 2 - 1,
+      -(y / renderer.domElement.clientHeight) * 2 + 1
+    );
     mouseMoved = true;
   };
 
@@ -113,7 +131,6 @@ export default function LandingTransition(renderer, clearColor, toggleTransition
   const onDocumentMouseDown = event => {
     // Does not use event.preventDefault(), manually handles touch events
     if (touchEvent === false) {
-      // console.log("Mouse click called");
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
       raycaster.setFromCamera(mouse, this.camera);
@@ -151,11 +168,9 @@ export default function LandingTransition(renderer, clearColor, toggleTransition
 
     const materialOptions = {
       size: 0.06,
-      // transparency: true,
       opacity: 0.7
     };
 
-    // const starStuff = new THREE.PointMaterial(materialOptions);
     const starStuff = new THREE.PointCloudMaterial(materialOptions);
 
     for (var i = 0; i < starQty; i++) {

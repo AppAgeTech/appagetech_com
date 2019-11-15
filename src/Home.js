@@ -351,10 +351,8 @@ class Home extends Component {
 
   // Show react component
   showReactComponent = reactComponentName => {
-    console.log("showReactComponent");
     // Checking for navigation lock as a result of 2D component rendering
     if (this.state.lockNavigation === false) {
-      console.log("showReactComponent2");
       // Checks a second click: is the CSS renderer is visible
       if (
         parseInt(cssRenderer.domElement.style.zIndex, 10) === 0 &&
@@ -367,7 +365,7 @@ class Home extends Component {
       ) {
         this.props.history.push(`/${reactComponentName}`);
         // Sets current css object to offscreen
-        // cssScene.position.y = 0;
+
         reactComponentsObj[
           this.state.cssComponentDisplayed
         ].position.z = offScreenZPosition2D;
@@ -384,7 +382,6 @@ class Home extends Component {
           this.props.history.push(`/${reactComponentName}`);
         }
       } else {
-        // cssScene.position.y = 0;
         reactComponentsObj[reactComponentName].position.z = zPosition2D;
         // Try TWEEN function
         this.transform(1000);
@@ -438,7 +435,7 @@ class Home extends Component {
     new RGBELoader()
       .setDataType(THREE.UnsignedByteType)
       .setPath("textures/")
-      .load("AbstractStudio03.hdr", function(texture) {
+      .load("diyHdri_05i.hdr", function(texture) {
         cubeGenerator = new EquirectangularToCubeGenerator(texture, {
           resolution: 512
         });
@@ -453,7 +450,6 @@ class Home extends Component {
         const emissiveMap = emissiveMapLoader.load(
           "textures/EmissiveMap_01.png"
         );
-        emissiveMap.anisotropy = 16;
 
         // Models
         const typeParams = {
@@ -461,20 +457,19 @@ class Home extends Component {
           envMapIntensity: 1,
           color: 0x040404,
           metalness: 1,
-          roughness: 0.2,
+          roughness: 0.0,
           emissive: 0x000000,
           emissiveIntensity: 1
         };
         const iconParams = {
           envMap: hdrEnvMap,
-          envMapIntensity: 1,
+          envMapIntensity: 0.85,
           emissiveMap: emissiveMap,
           emissiveIntensity: 0.5,
-          emissive: 0xb3dde9,
           color: 0x3da3e3,
+          emissive: 0x9ffcf7,
           metalness: 1,
-          roughness: 0.5,
-          transparent: true
+          roughness: 0.12
         };
         const zPos = 215;
         const zRot = null;
@@ -1445,10 +1440,6 @@ class Home extends Component {
       passive: false
     });
   };
-
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.onWindowResize);
-  // }
 
   render() {
     return <div ref={this.mount} />;

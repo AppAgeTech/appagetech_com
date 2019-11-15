@@ -66,7 +66,7 @@ class Contact extends Component {
 
   render() {
     const windowAspect = window.innerWidth / window.innerHeight;
-    const marginTop = windowAspect > 1 ? -300 : -300;
+    const marginTop = windowAspect > 1 ? -300 : -450;
 
     const { isVisible } = this.state;
     const { open } = this.state;
@@ -93,8 +93,8 @@ class Contact extends Component {
                   <Figure
                     style={{
                       paddingTop: 35,
-                      border: "3px solid",
-                      borderRadius: 20,
+                      border: "1px solid",
+                      borderRadius: 10,
                       height: 380,
                       width: 220
                     }}
@@ -115,9 +115,9 @@ class Contact extends Component {
                     <Row className="justify-content-center mb-3">
                       <i>Los Angeles, California</i>
                     </Row>
-                    <Row style={{ marginLeft: 0, padding: 0 }}>
+                    <Row style={{ marginLeft: 8, padding: 0 }}>
                       <Col>
-                        <AnimatedHover style={{ width: 50, height: 50 }}>
+                        <AnimatedHover style={{ width: 43, height: 43 }}>
                           <Button
                             href={`mailto:william@appagetech.com`}
                             target="_blank"
@@ -125,14 +125,14 @@ class Contact extends Component {
                           >
                             <FontAwesomeIcon
                               icon={faAt}
-                              size="3x"
+                              size="2x"
                               color="black"
                             />
                           </Button>
                         </AnimatedHover>
                       </Col>
                       <Col>
-                        <AnimatedHover style={{ width: 50, height: 50 }}>
+                        <AnimatedHover style={{ width: 43, height: 43 }}>
                           <Button
                             href="https://www.linkedin.com/in/williamandrewgriffin/"
                             target="_blank"
@@ -140,7 +140,7 @@ class Contact extends Component {
                           >
                             <FontAwesomeIcon
                               icon={faLinkedin}
-                              size="3x"
+                              size="2x"
                               color="black"
                             />
                           </Button>
@@ -158,8 +158,8 @@ class Contact extends Component {
                   <Figure
                     style={{
                       paddingTop: 35,
-                      border: "3px solid",
-                      borderRadius: 20,
+                      border: "1px solid",
+                      borderRadius: 10,
                       height: 380,
                       width: 220
                     }}
@@ -180,9 +180,9 @@ class Contact extends Component {
                     <Row className="justify-content-center mb-3">
                       <i>New York, New York</i>
                     </Row>
-                    <Row style={{ marginLeft: 0, padding: 0 }}>
+                    <Row style={{ marginLeft: 8, padding: 0 }}>
                       <Col>
-                        <AnimatedHover style={{ width: 50, height: 50 }}>
+                        <AnimatedHover style={{ width: 43, height: 43 }}>
                           <Button
                             href={`mailto:preston@appagetech.com`}
                             target="_blank"
@@ -190,14 +190,14 @@ class Contact extends Component {
                           >
                             <FontAwesomeIcon
                               icon={faAt}
-                              size="3x"
+                              size="2x"
                               color="black"
                             />
                           </Button>
                         </AnimatedHover>
                       </Col>
                       <Col>
-                        <AnimatedHover style={{ width: 50, height: 50 }}>
+                        <AnimatedHover style={{ width: 43, height: 43 }}>
                           <Button
                             href="https://www.linkedin.com/in/prestonchaplin/"
                             target="_blank"
@@ -205,7 +205,7 @@ class Contact extends Component {
                           >
                             <FontAwesomeIcon
                               icon={faLinkedin}
-                              size="3x"
+                              size="2x"
                               color="black"
                             />
                           </Button>

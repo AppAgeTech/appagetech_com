@@ -87,16 +87,13 @@ class About extends Component {
                 style={{
                   paddingTop: 100,
                   marginBottom: 30
-                  // width: "100vw",
-                  // width: "100%",
-                  // height: "auto"
                 }}
               >
                 <img
                   src="images/Figures-By-Donna-06-Centered.png"
                   width="100%"
                   height="auto"
-                  alt="App Age Logo"
+                  alt=""
                 />
               </div>
 

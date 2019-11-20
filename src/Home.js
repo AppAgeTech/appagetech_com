@@ -435,9 +435,9 @@ class Home extends Component {
     new RGBELoader()
       .setDataType(THREE.UnsignedByteType)
       .setPath("textures/")
-      .load("diyHdri_05i.hdr", function(texture) {
+      .load("diyHdri_06a-512px.hdr", function(texture) {
         cubeGenerator = new EquirectangularToCubeGenerator(texture, {
-          resolution: 512
+          resolution: 256
         });
         cubeGenerator.update(glRenderer);
         pmremGenerator = new PMREMGenerator(cubeGenerator.renderTarget.texture);
@@ -463,9 +463,9 @@ class Home extends Component {
         };
         const iconParams = {
           envMap: hdrEnvMap,
-          envMapIntensity: 0.85,
+          envMapIntensity: 0.9,
           emissiveMap: emissiveMap,
-          emissiveIntensity: 0.5,
+          emissiveIntensity: 0.45,
           color: 0x3da3e3,
           emissive: 0x9ffcf7,
           metalness: 1,

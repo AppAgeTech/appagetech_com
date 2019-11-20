@@ -66,7 +66,7 @@ class About extends Component {
     const lineSpace = windowAspect > 1 ? 2.3 : 1.8;
     const paddingX = windowAspect > 1 ? 130 : 80;
     const strongTextSize = windowAspect > 1 ? 36 : 28;
-    const marginX = windowAspect > 1 ? 0 : -110;
+    const marginX = windowAspect > 1 ? 200 : -110;
 
     const { isVisible, isOpen } = this.state;
 
@@ -83,12 +83,20 @@ class About extends Component {
                 marginRight: marginX
               }}
             >
-              <div style={{ paddingTop: 100, marginBottom: 30 }}>
+              <div
+                style={{
+                  paddingTop: 100,
+                  marginBottom: 30
+                  // width: "100vw",
+                  // width: "100%",
+                  // height: "auto"
+                }}
+              >
                 <img
                   src="images/Figures-By-Donna-06-Centered.png"
                   width="100%"
                   height="auto"
-                  alt=""
+                  alt="App Age Logo"
                 />
               </div>
 

@@ -37,7 +37,7 @@ export default function LandingTransition(
   new RGBELoader()
     .setDataType(THREE.UnsignedByteType)
     .setPath("textures/")
-    .load("diyHdri_01o.hdr", function(texture) {
+    .load("diyHdri_01t-512px.hdr", function(texture) {
       cubeGenerator = new EquirectangularToCubeGenerator(texture, {
         resolution: 256
       });

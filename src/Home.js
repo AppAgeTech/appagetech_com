@@ -230,7 +230,7 @@ class Home extends Component {
     glRenderer.setClearColor(0xecf8ff, 1);
     glRenderer.setPixelRatio(window.devicePixelRatio);
     glRenderer.setSize(window.innerWidth, window.innerHeight);
-    glRenderer.antialias = true;
+    // glRenderer.antialias = true;
     glRenderer.domElement.style.position = "absolute";
     glRenderer.domElement.style.top = 0;
     return glRenderer;
@@ -353,6 +353,14 @@ class Home extends Component {
   showReactComponent = reactComponentName => {
     // Checking for navigation lock as a result of 2D component rendering
     if (this.state.lockNavigation === false) {
+      // console.log("showReactComponent2");
+
+      if (reactComponentName === "contact" && windowAspect < 1) {
+        cssScene.position.y = -10;
+      } else {
+        cssScene.position.y = 0;
+      }
+
       // Checks a second click: is the CSS renderer is visible
       if (
         parseInt(cssRenderer.domElement.style.zIndex, 10) === 0 &&
@@ -365,7 +373,7 @@ class Home extends Component {
       ) {
         this.props.history.push(`/${reactComponentName}`);
         // Sets current css object to offscreen
-
+        // cssScene.position.y = 0;
         reactComponentsObj[
           this.state.cssComponentDisplayed
         ].position.z = offScreenZPosition2D;
@@ -382,6 +390,7 @@ class Home extends Component {
           this.props.history.push(`/${reactComponentName}`);
         }
       } else {
+        // cssScene.position.y = 0;
         reactComponentsObj[reactComponentName].position.z = zPosition2D;
         // Try TWEEN function
         this.transform(1000);
@@ -435,9 +444,9 @@ class Home extends Component {
     new RGBELoader()
       .setDataType(THREE.UnsignedByteType)
       .setPath("textures/")
-      .load("diyHdri_06a.hdr", function(texture) {
+      .load("AbstractStudio03.hdr", function(texture) {
         cubeGenerator = new EquirectangularToCubeGenerator(texture, {
-          resolution: 256
+          resolution: 512
         });
         cubeGenerator.update(glRenderer);
         pmremGenerator = new PMREMGenerator(cubeGenerator.renderTarget.texture);
@@ -450,6 +459,7 @@ class Home extends Component {
         const emissiveMap = emissiveMapLoader.load(
           "textures/EmissiveMap_01.png"
         );
+        emissiveMap.anisotropy = 16;
 
         // Models
         const typeParams = {
@@ -457,19 +467,20 @@ class Home extends Component {
           envMapIntensity: 1,
           color: 0x040404,
           metalness: 1,
-          roughness: 0.0,
+          roughness: 0.2,
           emissive: 0x000000,
           emissiveIntensity: 1
         };
         const iconParams = {
           envMap: hdrEnvMap,
-          envMapIntensity: 0.9,
+          envMapIntensity: 1,
           emissiveMap: emissiveMap,
-          emissiveIntensity: 0.45,
+          emissiveIntensity: 0.5,
+          emissive: 0xb3dde9,
           color: 0x3da3e3,
-          emissive: 0x9ffcf7,
           metalness: 1,
-          roughness: 0.12
+          roughness: 0.5,
+          transparent: true
         };
         const zPos = 215;
         const zRot = null;
